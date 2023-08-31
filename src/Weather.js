@@ -3,6 +3,7 @@ import "./Weather.css";
 import sunImg from "./img/sun.png";
 import axios from "axios";
 import { RotatingSquare } from "react-loader-spinner";
+import FormattedDate from "./FormattedDate";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -14,6 +15,7 @@ export default function Weather(props) {
       city: response.data.city,
       wind: response.data.wind.speed,
       description: response.data.condition.description,
+      date: new Date(response.data.time * 1000),
     });
   }
   if (weatherData.ready) {
@@ -42,11 +44,14 @@ export default function Weather(props) {
             <span className="unit">ºC</span>
           </h1>
           <h6>
+            <FormattedDate date={weatherData.date} />
+          </h6>
+
+          <h2>{weatherData.city}</h2>
+          <h6>
             {weatherData.humidity} % | {Math.round(weatherData.wind)} km/h |{" "}
             <span className="text-capitalize">{weatherData.description}</span>
           </h6>
-          <h2>{weatherData.city}</h2>
-          <h6>AUG 2 | FRIDAY | 13:06 </h6>
           <img src={sunImg} alt={weatherData.description} />
         </div>
       </div>
