@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "./Weather.css";
-import sunImg from "./img/sun.png";
+
 import axios from "axios";
 import { RotatingSquare } from "react-loader-spinner";
-import FormattedDate from "./FormattedDate";
+
+import Weatherinfo from "./Weatherinfo";
 
 export default function Weather(props) {
+  const [city, setCity] = useState(props.defaultCity);
   const [weatherData, setWeatherData] = useState({ ready: false });
   function handleResponse(response) {
     setWeatherData({
@@ -18,11 +20,22 @@ export default function Weather(props) {
       date: new Date(response.data.time * 1000),
     });
   }
+  function search() {
+    let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=29a93389cbc7b063100ft3doa5403cdf&units=metric`;
+    axios.get(url).then(handleResponse);
+  }
+  function handleSumbit(event) {
+    event.preventDefault();
+    search();
+  }
+  function handleCityChange(event) {
+    setCity(event.target.value);
+  }
   if (weatherData.ready) {
     return (
       <div className="Weather">
         <div className="container">
-          <form>
+          <form onSubmit={handleSumbit}>
             <div className="row justify-content-between">
               <div className="col-9">
                 <input
@@ -30,6 +43,7 @@ export default function Weather(props) {
                   placeholder="Enter a city..."
                   className="form-control"
                   autoFocus="on"
+                  onChange={handleCityChange}
                 />
               </div>
               <div className="col-3">
@@ -37,28 +51,12 @@ export default function Weather(props) {
               </div>
             </div>
           </form>
-          <h1>
-            <span className="temperature">
-              {Math.round(weatherData.temperature)}
-            </span>
-            <span className="unit">ºC</span>
-          </h1>
-          <h6>
-            <FormattedDate date={weatherData.date} />
-          </h6>
-
-          <h2>{weatherData.city}</h2>
-          <h6>
-            {weatherData.humidity} % | {Math.round(weatherData.wind)} km/h |{" "}
-            <span className="text-capitalize">{weatherData.description}</span>
-          </h6>
-          <img src={sunImg} alt={weatherData.description} />
+          <Weatherinfo data={weatherData} />
         </div>
       </div>
     );
   } else {
-    let url = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=29a93389cbc7b063100ft3doa5403cdf&units=metric`;
-    axios.get(url).then(handleResponse);
+    search();
     return (
       <RotatingSquare
         height="500"
