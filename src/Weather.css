@@ -68,3 +68,7 @@
   top: -45px;
   padding: 3px;
 }
+
+#weather-icon {
+  max-width: 350px;
+}

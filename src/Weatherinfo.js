@@ -1,6 +1,7 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
-import sunImg from "./img/sun.png";
+// import sunImg from "./img/sun.png";
+import WeatherIcon from "./WeatherIcon";
 
 export default function Weatherinfo(props) {
   return (
@@ -20,7 +21,8 @@ export default function Weatherinfo(props) {
         {props.data.humidity} % | {Math.round(props.data.wind)} km/h |{" "}
         <span className="text-capitalize">{props.data.description}</span>
       </h6>
-      <img src={sunImg} alt={props.data.description} />
+      <WeatherIcon code={props.data.icon} alt={props.data.description} />
+      {/* <img src={sunImg} alt={props.data.description} /> */}
     </div>
   );
 }

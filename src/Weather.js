@@ -10,6 +10,7 @@ export default function Weather(props) {
   const [city, setCity] = useState(props.defaultCity);
   const [weatherData, setWeatherData] = useState({ ready: false });
   function handleResponse(response) {
+    console.log(response);
     setWeatherData({
       ready: true,
       temperature: response.data.temperature.current,
@@ -18,6 +19,7 @@ export default function Weather(props) {
       wind: response.data.wind.speed,
       description: response.data.condition.description,
       date: new Date(response.data.time * 1000),
+      icon: response.data.condition.icon,
     });
   }
   function search() {
