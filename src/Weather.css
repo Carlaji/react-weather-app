@@ -108,4 +108,7 @@
   .Weather .unit {
     font-size: 30px;
   }
+  .App {
+    margin: 0;
+  }
 }
