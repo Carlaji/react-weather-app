@@ -11,7 +11,6 @@ import snow from "./img/snow.svg";
 import wind from "./img/wind.svg";
 
 export default function WeatherIcon(props) {
-  console.log(props.code);
   const codeMapping = {
     "clear-sky-day": sunImg,
     "clear-sky-night": moonImg,
@@ -33,6 +32,11 @@ export default function WeatherIcon(props) {
     "mist-night": wind,
   };
   return (
-    <img src={codeMapping[props.code]} alt={props.alt} id="weather-icon" />
+    <img
+      src={codeMapping[props.code]}
+      alt={props.alt}
+      width={props.width}
+      id="weather-icon"
+    />
   );
 }

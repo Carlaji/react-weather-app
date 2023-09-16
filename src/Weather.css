@@ -1,14 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200&display=swap");
+img {
+  margin-top: 40px;
+}
 
-.Weather {
-  text-align: center;
-  font-family: "Montserrat", sans-serif;
+.App {
   border-radius: 100px 100px 0px 0px;
   background: linear-gradient(
     180deg,
     rgba(175, 211, 226, 0.7) 0%,
     rgba(246, 241, 241, 0.5) 100%
   );
+  margin: 60px 10%;
+}
+.Weather {
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
 }
 
 .Weather h2 {
@@ -70,5 +76,5 @@
 }
 
 #weather-icon {
-  max-width: 350px;
+  max-width: 500px;
 }

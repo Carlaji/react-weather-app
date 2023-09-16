@@ -7,12 +7,7 @@ export default function Weatherinfo(props) {
   return (
     <div className="WeatherInfo">
       <WeatherTemperature celsius={props.data.temperature} />
-      {/* <h1>
-        <span className="temperature">
-          {Math.round(props.data.temperature)}
-        </span>
-        <span className="unit">ºC</span>
-      </h1> */}
+
       <h6>
         <FormattedDate date={props.data.date} />
       </h6>

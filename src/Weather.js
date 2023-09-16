@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Weather.css";
+import WeatherForecast from "./WeatherForecast";
 
 import axios from "axios";
 import { RotatingSquare } from "react-loader-spinner";
@@ -10,7 +11,7 @@ export default function Weather(props) {
   const [city, setCity] = useState(props.defaultCity);
   const [weatherData, setWeatherData] = useState({ ready: false });
   function handleResponse(response) {
-    console.log(response);
+    console.log(response.data);
     setWeatherData({
       ready: true,
       temperature: response.data.temperature.current,
@@ -19,6 +20,7 @@ export default function Weather(props) {
       wind: response.data.wind.speed,
       description: response.data.condition.description,
       date: new Date(response.data.time * 1000),
+      icons: `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`,
       icon: response.data.condition.icon,
     });
   }
@@ -54,6 +56,7 @@ export default function Weather(props) {
             </div>
           </form>
           <Weatherinfo data={weatherData} />
+          <WeatherForecast data={weatherData} />
         </div>
       </div>
     );
