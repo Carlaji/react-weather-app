@@ -4,5 +4,30 @@
 
 .WeatherForecast-temperature-min {
   opacity: 0.6;
-  margin-left: 5px;
+  margin-left: 10px;
+}
+.WeatherForecast-day {
+  color: #000;
+  font-family: Montserrat;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: -10px;
+}
+.WeatherForecast-temperature {
+  font-family: Montserrat;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Forecast-icon {
+  height: 130px;
+}
+
+@media (max-width: 576px) {
+  .col {
+    margin-bottom: 50px;
+  }
 }

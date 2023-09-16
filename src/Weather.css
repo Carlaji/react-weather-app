@@ -20,6 +20,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  text-transform: uppercase;
 }
 
 .Weather h6 {
@@ -37,16 +38,19 @@
   padding-bottom: 20px;
 }
 .Weather .form-control {
-  width: 426px;
+  max-width: 426px;
   height: 30px;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.25);
 }
 
 .Weather .btn {
-  width: 119px;
+  max-width: 119px;
   height: 30px;
   border-radius: 5px;
   background: #146c94;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.25);
   color: #fff;
   font-size: 15px;
   font-style: normal;
@@ -63,17 +67,45 @@
 }
 
 .Weather .unit {
-  color: #0000009f;
-  font-size: 35px;
+  color: #000000d8;
+  font-size: 45px;
   font-style: normal;
   font-weight: 400;
   position: relative;
-  top: -60px;
+  top: -55px;
   padding: 3px;
+}
+
+[data-testid="rotating-square-wrapper"] {
+  display: flex;
+  justify-content: center;
 }
 
 #weather-icon {
   max-width: 500px;
   max-height: 350px;
   margin: 40px 0;
+}
+
+@media (max-width: 576px) {
+  body {
+    overflow-x: hidden !important;
+  }
+  .container {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+  #weather-icon {
+    max-width: 100%;
+  }
+
+  .Weather h2 {
+    font-size: 40px;
+  }
+  .Weather .temperature {
+    font-size: 100px;
+  }
+  .Weather .unit {
+    font-size: 30px;
+  }
 }

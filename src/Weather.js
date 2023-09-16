@@ -11,7 +11,6 @@ export default function Weather(props) {
   const [city, setCity] = useState(props.defaultCity);
   const [weatherData, setWeatherData] = useState({ ready: false });
   function handleResponse(response) {
-    console.log(response.data);
     setWeatherData({
       ready: true,
       temperature: response.data.temperature.current,
@@ -41,7 +40,7 @@ export default function Weather(props) {
         <div className="container">
           <form onSubmit={handleSumbit}>
             <div className="row justify-content-between">
-              <div className="col-9">
+              <div className="col-lg-9">
                 <input
                   type="search"
                   placeholder="Enter a city..."
@@ -50,7 +49,7 @@ export default function Weather(props) {
                   onChange={handleCityChange}
                 />
               </div>
-              <div className="col-3">
+              <div className="col-lg-3 mt-2">
                 <input type="submit" value="Search" className="btn" />
               </div>
             </div>
@@ -72,6 +71,7 @@ export default function Weather(props) {
         wrapperStyle={{}}
         wrapperClass=""
         visible={true}
+        className="loading"
       />
     );
   }

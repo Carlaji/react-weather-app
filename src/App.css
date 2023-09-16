@@ -5,7 +5,8 @@
 }
 .App footer {
   font-family: "Montserrat", sans-serif;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 200;
-  margin-top: 10px;
+  margin-top: 5%;
+  text-align: center;
 }
